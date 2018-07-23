@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "@ngx-material-keyboard-fix-angular-6/core",
-  "version": "0.1.0",
-  "description": "Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 5 (https://material.angular.io/). Add fix for Angular 6.",
+  "version": "0.1.2",
+  "description": "FORK, ADD SUPPORT Angular 6.Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 5 (https://material.angular.io/).",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManFromSiberia/core.git"
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/ngx-material-keyboard/core/issues"
   },
-  "homepage": "https://github.com/ManFromSiberia/core",
+  "homepage": "https://github.com/ngx-material-keyboard/core",
   "publishConfig": {
     "access": "public"
   },
