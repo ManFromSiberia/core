@@ -1,7 +1,7 @@
 {
   "name": "ngx-material-keyboard-angular-6-support",
-  "version": "0.1.1",
-  "description": "Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 2 (https://material.angular.io/).",
+  "version": "0.1.2",
+  "description": "FORK FOR SUPPORT ANGULAR 6 AND SOME STYLE FIX. Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 2 (https://material.angular.io/).",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ManFromSiberia/core.git"
