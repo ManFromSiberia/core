@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class AppComponent implements OnInit, OnDestroy {
 
   private _enterSubscription: Subscription;
+  private _closeSubscription: Subscription;
 
   private _keyboardRef: MatKeyboardRef<MatKeyboardComponent>;
 
@@ -88,6 +89,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this._enterSubscription = this._keyboardRef.instance.enterClick.subscribe(() => {
       this.submitForm();
     });
+    this._closeSubscription = this._keyboardRef.instance.closeClick.subscribe(() => {
+      console.log('close subscription');
+      // this._keyboardRef.dismiss();
+    });
   }
 
   closeCurrentKeyboard() {
@@ -97,6 +102,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     if (this._enterSubscription) {
       this._enterSubscription.unsubscribe();
+    }
+
+    if (this._closeSubscription) {
+      this._closeSubscription.unsubscribe();
     }
   }
 

@@ -4,8 +4,10 @@ $mat-typography-config: mat-typography-config();
 $mat-keyboard-button-distance: 8px !default;
 $mat-keyboard-padding: 14px 24px !default;
 
+
 .mat-keyboard {
   &-wrapper {
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.3);
     background-color: mat-color($mat-grey, 100);
     border-radius: 2px;
     display: flex;
@@ -58,7 +60,7 @@ $mat-keyboard-padding: 14px 24px !default;
     box-sizing: border-box;
     flex: 1 1 auto;
     padding: $mat-keyboard-button-distance / 2;
-     height: 60px;
+    // height: 60px;
   }
 
   &-key {
