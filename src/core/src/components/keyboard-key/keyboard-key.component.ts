@@ -176,8 +176,7 @@ export class MatKeyboardKeyComponent implements OnInit {
         break;
 
       case KeyboardClassKey.Bksp:
-        this.inputValue = [value.slice(0, caret - 1)].join('');
-        this._setCursorPosition(caret - 1);
+        this.deleteSelectedText();
         this.bkspClick.emit(event);
         break;
 
@@ -218,9 +217,39 @@ export class MatKeyboardKeyComponent implements OnInit {
     }
 
     if (char && this.input) {
-      this.inputValue = caret ? [value.slice(0, caret), char, value.slice(caret)].join('') : value + char;
+      this.replaceSelectedText(char);
       this._setCursorPosition(caret + 1);
     }
+  }
+
+  private deleteSelectedText(): void {
+    const value = this.inputValue;
+    let caret = this.input ? this._getCursorPosition() : 0;
+    let selectionLength = this._getSelectionLength();
+    if (selectionLength === 0) {
+      if (caret === 0) {
+        return;
+      }
+
+      caret--;
+      selectionLength = 1;
+    }
+
+    const headPart = value === null ? "" : value.slice(0, caret);
+    const endPart = value === null ? "" : value.slice(caret + selectionLength);
+
+    this.inputValue = [headPart, endPart].join('');
+    this._setCursorPosition(caret);
+  }
+
+  private replaceSelectedText(char: string): void {
+    const value = this.inputValue;
+    const caret = this.input ? this._getCursorPosition() : 0;
+    const selectionLength = this._getSelectionLength();
+    const headPart = value === null ? "" : value.slice(0, caret);
+    const endPart = value === null ? "" : value.slice(caret + selectionLength);
+
+    this.inputValue = [headPart, char, endPart].join('');
   }
 
   private _triggerKeyEvent(): Event {
@@ -239,7 +268,6 @@ export class MatKeyboardKeyComponent implements OnInit {
     // );
     //
     // window.document.dispatchEvent(keyboardEvent);
-
     return keyboardEvent;
   }
 
@@ -264,6 +292,24 @@ export class MatKeyboardKeyComponent implements OnInit {
     }
   }
 
+  private _getSelectionLength(): number {
+    if (!this.input) {
+      return;
+    }
+
+    if ('selectionEnd' in this.input.nativeElement) {
+      // Standard-compliant browsers
+      return this.input.nativeElement.selectionEnd - this.input.nativeElement.selectionStart;
+    }
+
+    if ('selection' in window.document) {
+      // IE
+      this.input.nativeElement.focus();
+
+      return window.document['selection'].createRange().text.length;
+    }
+  }
+
   // inspired by:
   // ref https://stackoverflow.com/a/12518737/1146207
   // tslint:disable one-line
@@ -272,11 +318,10 @@ export class MatKeyboardKeyComponent implements OnInit {
       return;
     }
 
-    this.inputValue = this.control ? this.control.value : this.input.nativeElement.value;
+    this.inputValue = this.control.value;
     // ^ this is used to not only get "focus", but
     // to make sure we don't have it everything -selected-
     // (it causes an issue in chrome, and having it doesn't hurt any other browser)
-
     if ('createTextRange' in this.input.nativeElement) {
       const range = this.input.nativeElement.createTextRange();
       range.move('character', position);
