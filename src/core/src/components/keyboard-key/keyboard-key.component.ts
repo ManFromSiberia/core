@@ -235,8 +235,8 @@ export class MatKeyboardKeyComponent implements OnInit {
       selectionLength = 1;
     }
 
-    const headPart = value === null ? "" : value.slice(0, caret);
-    const endPart = value === null ? "" : value.slice(caret + selectionLength);
+    const headPart = value === null || value === undefined ? "" : value.slice(0, caret);
+    const endPart = value === null || value === undefined ? "" : value.slice(caret + selectionLength);
 
     this.inputValue = [headPart, endPart].join('');
     this._setCursorPosition(caret);
@@ -246,8 +246,8 @@ export class MatKeyboardKeyComponent implements OnInit {
     const value = this.inputValue;
     const caret = this.input ? this._getCursorPosition() : 0;
     const selectionLength = this._getSelectionLength();
-    const headPart = value === null ? "" : value.slice(0, caret);
-    const endPart = value === null ? "" : value.slice(caret + selectionLength);
+    const headPart = value === null || value === undefined ? "" : value.slice(0, caret);
+    const endPart = value === null || value === undefined ? "" : value.slice(caret + selectionLength);
 
     this.inputValue = [headPart, char, endPart].join('');
   }

@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "ngx-material-keyboard-6-angular-support",
-  "version": "0.1.5",
-  "description": "Onscreen virtual keyboard for Angular ≥ 5 (https://angular.io/) using Material 5 (https://material.angular.io/).",
+  "version": "0.1.6",
+  "description": "THIS IS FORK!!! Onscreen virtual keyboard for Angular ≥ 6 (https://angular.io/) using Material 5 (https://material.angular.io/).",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ngx-material-keyboard/core.git"
