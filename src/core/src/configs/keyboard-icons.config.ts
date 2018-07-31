@@ -9,8 +9,7 @@ const keyboardIcons: IKeyboardIcons = {
   [KeyboardClassKey.Enter]: 'keyboard_return',
   [KeyboardClassKey.Shift]: 'keyboard_arrow_up',
   [KeyboardClassKey.Space]: ' ',
-  [KeyboardClassKey.Tab]: 'keyboard_tab',
-  [KeyboardClassKey.Close]: 'close'
+  [KeyboardClassKey.Tab]: 'keyboard_tab'
 };
 
 export { IKeyboardIcons, MAT_KEYBOARD_ICONS, keyboardIcons };

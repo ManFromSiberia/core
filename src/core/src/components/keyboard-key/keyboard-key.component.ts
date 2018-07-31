@@ -212,7 +212,7 @@ export class MatKeyboardKeyComponent implements OnInit {
         this.tabClick.emit(event);
         break;
 
-    case KeyboardClassKey.Close:
+    case KeyboardClassKey.Done:
         this.closeClick.emit(event);
         break;
 
