@@ -1,13 +1,13 @@
-<div class="mat-keyboard-wrapper"
+<div [class]="'mat-keyboard-wrapper ' + layout.name"
      [class.dark-theme]="darkTheme$ | async"
      [class.debug]="isDebug$ | async"
 >
-  <nav class="mat-keyboard-layout">
-    <div class="mat-keyboard-row"
-         *ngFor="let row of layout.keys"
+  <nav [class]="'mat-keyboard-layout ' + layout.name">
+    <div [class]="'mat-keyboard-row ' + 'row' + idx"
+         *ngFor="let row of layout.keys; let idx = index"
     >
-      <ng-container *ngFor="let key of row">
-        <mat-keyboard-key class="mat-keyboard-col"
+      <ng-container *ngFor="let key of row; let idx = index">
+        <mat-keyboard-key [class]="'mat-keyboard-col ' + 'col' + idx"
                           *ngIf="getModifiedKey(key)"
                           [key]="getModifiedKey(key)"
                           [active]="isActive(key)"
@@ -17,6 +17,7 @@
                           (capsClick)="onCapsClick()"
                           (altClick)="onAltClick()"
                           (shiftClick)="onShiftClick()"
+                          (closeClick)="onCloseClick()"
         ></mat-keyboard-key>
       </ng-container>
     </div>

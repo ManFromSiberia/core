@@ -10,5 +10,6 @@ export enum KeyboardClassKey {
   Enter = 'Enter',
   Shift = 'Shift',
   Space = ' ',
-  Tab = 'Tab'
+  Tab = 'Tab',
+  DONE = 'DONE'
 }

@@ -58,6 +58,8 @@ export class MatKeyboardComponent implements OnInit {
 
   shiftClick: EventEmitter<void> = new EventEmitter<void>();
 
+  closeClick: EventEmitter<void> = new EventEmitter<void>();
+
   // returns an observable of the input instance
   get inputInstance(): Observable<ElementRef | null> {
     return this._inputInstance$.asObservable();
@@ -157,6 +159,11 @@ export class MatKeyboardComponent implements OnInit {
     if (event.key === KeyboardClassKey.Shift && this._modifier !== KeyboardModifier.Shift && this._modifier !== KeyboardModifier.ShiftAlt) {
       this.onShiftClick();
     }
+
+    // close on escape
+    if (event.keyCode === 27) {
+      this.onCloseClick();
+    }
   }
 
   /**
@@ -221,6 +228,10 @@ export class MatKeyboardComponent implements OnInit {
 
     // notify subscribers
     this.shiftClick.next();
+  }
+
+  onCloseClick() {
+    this.closeClick.next();
   }
 
   private _invertAltModifier(modifier: KeyboardModifier): KeyboardModifier {

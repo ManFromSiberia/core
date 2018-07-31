@@ -28,6 +28,8 @@ export class MatKeyboardDirective implements OnDestroy {
 
   @Output() shiftClick: EventEmitter<void> = new EventEmitter<void>();
 
+  @Output() closeClick: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private _elementRef: ElementRef,
               private _keyboardService: MatKeyboardService,
               @Optional() @Self() private _control?: NgControl) {}
@@ -57,6 +59,7 @@ export class MatKeyboardDirective implements OnDestroy {
     this._keyboardRef.instance.capsClick.subscribe(() => this.capsClick.next());
     this._keyboardRef.instance.altClick.subscribe(() => this.altClick.next());
     this._keyboardRef.instance.shiftClick.subscribe(() => this.shiftClick.next());
+    this._keyboardRef.instance.closeClick.subscribe(() => { this._keyboardRef.dismiss(); });
   }
 
   @HostListener('blur', ['$event'])

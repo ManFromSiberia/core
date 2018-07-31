@@ -84,6 +84,9 @@ export class MatKeyboardKeyComponent implements OnInit {
   @Output()
   keyClick = new EventEmitter<MouseEvent>();
 
+  @Output()
+  closeClick = new EventEmitter<MouseEvent>();
+
   get lowerKey(): string {
     return `${this.key}`.toLowerCase();
   }
@@ -207,6 +210,10 @@ export class MatKeyboardKeyComponent implements OnInit {
       case KeyboardClassKey.Tab:
         char = VALUE_TAB;
         this.tabClick.emit(event);
+        break;
+
+    case KeyboardClassKey.DONE:
+        this.closeClick.emit(event);
         break;
 
       default:
