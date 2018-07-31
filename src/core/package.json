@@ -5,7 +5,7 @@
   "description": "THIS IS FORK!!! Onscreen virtual keyboard for Angular ≥ 6 (https://angular.io/) using Material 5 (https://material.angular.io/).",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngx-material-keyboard/core.git"
+    "url": "git+https://github.com/ManFromSiberia/core.git"
   },
   "author": "David Enke <post@davidenke.de>",
   "license": "MIT",
