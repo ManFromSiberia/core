@@ -192,6 +192,7 @@ export class MatKeyboardKeyComponent implements OnInit {
           char = VALUE_NEWLINE;
         } else {
           this.enterClick.emit(event);
+          this._setInputBlur();
           // TODO: trigger submit / onSubmit / ngSubmit properly (for the time being this has to be handled by the user himself)
           // console.log(this.control.ngControl.control.root)
           // this.input.nativeElement.form.submit();
@@ -214,6 +215,7 @@ export class MatKeyboardKeyComponent implements OnInit {
 
     case KeyboardClassKey.DONE:
         this.closeClick.emit(event);
+        this._setInputBlur();
         break;
 
       default:
@@ -346,6 +348,12 @@ export class MatKeyboardKeyComponent implements OnInit {
         this.input.nativeElement.focus();
         return false;
       }
+    }
+  }
+
+  private _setInputBlur() {
+    if (this.input && this.input.nativeElement) {
+      this.input.nativeElement.blur();
     }
   }
 
