@@ -127,7 +127,7 @@ export class MatKeyboardKeyComponent implements OnInit {
   }
 
   get inputValue(): string {
-    if (this.control) {
+    if (this.control && this.control.value && !this._isControlUpdateOnBlur()) {
       return this.control.value;
     } else if (this.input && this.input.nativeElement && this.input.nativeElement.value) {
       return this.input.nativeElement.value;
@@ -351,6 +351,10 @@ export class MatKeyboardKeyComponent implements OnInit {
 
   private _isTextarea(): boolean {
     return this.input && this.input.nativeElement && this.input.nativeElement.tagName === 'TEXTAREA';
+  }
+
+  private _isControlUpdateOnBlur(): boolean {
+    return this.control && this.control.updateOn === 'blur';
   }
 
 }
